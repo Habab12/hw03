@@ -1,7 +1,3 @@
-%CS-113 S18 HW-3
-%Released: 16-Feb-2018
-%Deadline: 2-March-2018 7.00 pm
-%Authors: Abdullah Zafar, Waqar Saleem.
 
 
 \documentclass[addpoints]{exam}
@@ -20,7 +16,7 @@
 \usepackage{amsfonts,graphicx,amsmath,hyperref}
 
 \title{Habib University\\CS-113 Discrete Mathematics\\Spring 2018\\HW 3}
-\author{$<your ID>$}  % replace with your ID, e.g. oy02945
+\author{$<hi04031>$}  % replace with your ID, e.g. oy02945
 \date{Due: 19h, 2nd March, 2018}
 
 
@@ -38,32 +34,59 @@ All sets carry data, but how much information can be extracted from it? Consider
   \part Consider $A$ to be the set of $n$ distinct facts. What is the information potential of this set?
   
   \begin{solution}
-    % Write your solution here
+    2$^{n^2}$ because we know that number possible relations are 2$^{n^2}$
   \end{solution}
   
   \part Reflexive pairs of the form $(fact\;x, fact\;x)$ are considered redundant in our model. What is the information potential of the ``non-redundant" set, that is, the set without reflexive relations? 
   
   \begin{solution}
-    % Write your solution here
+    So, the total numbers of a relation of a set with cardinality n is 2$^{n^2}$. The amount of reflexive relation a set will have is 2$^{n^2-n}$ and in order to take out relation that are not reflexive 2$^{n^2}$ - 2$^{n^2-n}$. Since reflexive sets are redundant so the the possible combination in a set that are non redundant are 2$^{n^2}$ - 2$^{n^2-n}$
   \end{solution}
 
   \part Anti-symmetric relations that follow the rule $(fact\;x,fact\;y)\; \land (fact\;y,fact\;x) \rightarrow fact\;x = fact\;y$ are of special interest to our model. Such pairs, as in the aforementioned antecedent, can be used to express ordered relationships between facts. What is the combined Information Potential of anti-symmetric relations on the non-redundant set? 
   \begin{solution}
-    % Write your solution here
+    Assume that there are no reflexive pair so we will have 3 ways to deal with set.\\
+    1) Include (x,y) but not (y,x).\\
+    2) Include (y,x) but not (x,y).\\
+    3) Don't include both (x,y) and (y,x).\\
+    So we can form a formula: $3^{(n^2-n)/2}$\\
+    We know that there are n reflexive elements.Thus total relation involving reflexive will be $2^{n}-1$\\
+    So total relations will be = $(3^{(n^2-n)/2})*(2^{n}-1)$
+    
+    
   \end{solution}
   
   \part There are many ways to describe a relation in natural language. For example, a relation described as $``x<y"$ over the set $\{1,2\}$ may also be described as $``x+1=y"$. Specifically, two descriptions that produce the same relation are considered ``isomorphs" of one another in our model. There may be any number of isomorphs for a given relation. Given $2^{n^2+1}$ descriptions of relations, how many isomorphs exist? (Give your answer as a range)
   
   \begin{solution}
-    % Write your solution here
-  \end{solution}
-
-\end{parts}
+    We are given total $2^{n^2+1}$\\
+    Total unique relation are $2^{n^2}$\\
+    So descriptions that aare not unique = $2^{n^2+1} - 2^{n^2} = 2^{n^2}\\$
+    Minimum Isomorphs = $2^{n^2}+1$(becau
+  there exists atleast one relation to which all non-unique relation.)\\
+    So the range will $2^{n^2+1} \geq Isomorphs \geq 2^{n^2}+1$ \end{solution}
+  \end{parts}
 
 \question Let $R$ be a relation from $A$ to $B$. Then the inverse of $R$, written $R^{-1}$, is a relation from $B$ to $A$ defined by $R^{-1} = \{(y,x) \in B \times A \:|\: (x,y) \in R\}$. Prove that $R$ is symmetric iff $R = R^{-1}$.
 
   \begin{solution}
-    % Write your solution here
+    If R is symmetric then\\
+    1)$(x,y) \in R \rightarrow (y,x) \in R^{-1}$\\
+    2)$(y,x) \in R \rightarrow (x,y) \in R^{-1}$\\
+    Applying HS on both sides\\
+    3)$(x,y) \in R \rightarrow (x,y) \in R^{-1}$\\
+    where $R$ is subset of $R^{-1}$ and (x,y) are arbitrary.\\
+    \\
+    Now going other way to prove\\
+    1)$(x,y) \in R^{-1} \rightarrow (y,x) \in R$\\
+    2)$(y,x) \in R^{-1} \rightarrow (x,y) \in R$\\
+    Applying HS on both sides\\
+    3)$(x,y) \in R^{-1} \rightarrow (x,y) \in R$\\
+    where $R^{-1}$ is subset of $R$ and (x,y) are arbitrary.\\
+    \\
+    We know that if $R \subseteq  R^{-1}  \wedge R^{-1} \subseteq R $ then $R = R^{-1}$ \\
+    $R$ is symmetric $\rightarrow R=R^{-1}$ \\
+    \\
   \end{solution}
 
 \question Let $R$ and $S$ be relations on a set $A$. Assuming $A$ has at least 3 elements, state whether each of the following statements is true or false, providing a brief explanation if true, or a counterexample if false:
@@ -76,14 +99,53 @@ All sets carry data, but how much information can be extracted from it? Consider
 \end{parts}
 
 
-  \begin{solution}
-    % Write your solution here
-  \end{solution}
+  \begin{solution}\\
+    (a) Yes $R \cup S$ will also be reflexive by definition of reflexive we know that,\\
+    For R,\\
+    $\forall x \in A {(x,x) \in R}$\\
+    For S,\\
+    $\forall x \in A {(x,x) \in S}$\\
+    Therefore,\\
+    $\forall x \in A {(x,x) \in R \cup S}$\\
+    because $R\cupS$ contains all the elements in R and S.\\
+    \\
+    (b) Let $R = {(a,b),(c,d)}$ which is anti-symmetric set.\\
+    Let $S = {(b,c),(d,a)}$ which is also anti-symmetric\\
+    So $R \circ S$ will be,\\
+    $R\circS = {(a,c),(c,a)}$ which is not anti-Symmetric.\\
+    If R is anti-ymmetric and S is anti-Symmetric then it doesn't mean that $R \circ S$ is also Symmetric so the above statement is False.\\  
+    \\
+    (c)$(x,y) \in R \cap S \rightarrow (x,y) \in R \wedge (x,y) \in S$\\
+    We know that R and S are Symmetric, $(y,x) \in R \wedge (y,x) \in S.$\\
+    So, $(y,x) \in R \cap S$\\
+    hence, $R \cap S $ is symmetric when R and S are Symmetric.\\
+    \\
+    (d)R is reflexive when $\forall x \in A {(x,x) \in R}$\\
+    And by definition of inverse function ${(x,x) \in R}$ $\rightarrow$ ${(x,x) \in R^{-1}}$\\
+    ${(x,x) \in R} \wedge {(x,x) \in s} \rightarrow {(x,x) \in R \cap S}$\\
+    Hence $R \cap S$ is not an empty set,if R is reflexive.\\
+    \\
+    (e) if R is transitive ${(x,y) \in R} \wedge {(y,z) \in S} \rightarrow {(x,z) \in R}$\\
+    By definition of inverse function ${(y,x),(z,y),(z,x) \in R^{-1}}$\\
+    So for ${R^{-1}}$. ${(y,x) \in R^{-1} \wedge (z,y) \in R^{-1} \rightarrow (z,x) \in R^{-1}}$ which is True. Hence, If R is transitive then $R^{-1}$ will also be transitive.
+    
+    \end{solution}
   
 \question Let $R$ be a relation on $A$. Prove that the digraph representation of $R$ has a path of length $n$ from $a$ to $b$ iff $(a, b) \in R^n$.
 
-  \begin{solution}
-    % Write your solution here
+  \begin{solution}\\
+    Using Induction to test this statement.\\
+    For our base case,\\
+    Let n = 1 which means that there is a direction relation from a to b so we can say that, $(a, b) \in R^1$\\
+    \\
+    Now let n = k:\\
+    Assume that there is a path k that exist between a to b so,$(a, b) \in R^k$\\
+    \\
+    If the above statement is true then there must exist a path K+1 from a to b. $(a, b) \in R^{K+1}$\\
+    \\
+    To understand this assume there are three points a,b,c. Assume that there is path n from a to b $(a, b) \in R^n$ and there is exist a path 1 from b to c $( b,c) \in R^n$\\
+    Hence by composition we can say that there exist a path n+1 from a to c $(a,c) \in R^{n+1}$
+    
   \end{solution}
 
 \question
@@ -96,7 +158,10 @@ All sets carry data, but how much information can be extracted from it? Consider
     Show that $\tau (\phi (\rho (R)))$ is an equivalence relation containing $R$.
     
       \begin{solution}
-    % Write your solution here
+    According to this, a pair of element $(a,a)$ where $a$ belongs to set $A$. If an element is paired with itself it is reflexive and as the union will include this the relation will be reflexive. Therefore $\phi(R)$ is a subset of $\tau (\phi (\rho (R)))$ so the whole composite relation is reflexive.\\
+        As we know that $(a,b) \in R \rightarrow (b,a)  \in R^{-1}$ therefore in the union of the two both $(a,b)$ and $(b,a)$ will be present which makes this relation symmetric. Therefore $\rho(R)$ is a subset of $\tau (\phi (\rho (R)))$ so the whole composite relation is symmetric.\\
+         According to the theorem, The transitive closure of a relation $R$ equals the connectivity relation $R^{*}$. This makes $R^{n}$ a subset of $\tau(R)$ and $\phi(R)$ is a subset of $\tau (\phi (\rho (R)))$ so the whole composite relation reflexive.\\
+      Therefore $\tau (\phi (\rho (R)))$ is an equivalence relation.
   \end{solution}
 
 
